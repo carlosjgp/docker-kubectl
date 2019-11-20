@@ -23,5 +23,8 @@ env:
   - KUBECTL_VERSION=v1.15.3
   - KUBECTL_VERSION=v1.16.0
 
+before_install:
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
 script:
   make build push KUBECTL_VERSION=${KUBECTL_VERSION}
