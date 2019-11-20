@@ -1,0 +1,27 @@
+# Credit: https://gist.github.com/y0ssar1an/df2dab474520c4086926f672c52db139
+#
+# use the latest ubuntu environment (18.04) available on travis
+dist: bionic
+
+language: generic
+
+# Only clone the most recent commit.
+git:
+  depth: 1
+
+# Don't email me the results of the test runs.
+notifications:
+  email: false
+
+services:
+  - docker
+
+env:
+  - KUBECTL_VERSION=v1.12.10
+  - KUBECTL_VERSION=v1.13.10
+  - KUBECTL_VERSION=v1.14.6
+  - KUBECTL_VERSION=v1.15.3
+  - KUBECTL_VERSION=v1.16.0
+
+script:
+  make build push KUBECTL_VERSION=${KUBECTL_VERSION}
