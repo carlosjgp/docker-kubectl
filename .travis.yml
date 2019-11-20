@@ -9,6 +9,11 @@ language: generic
 git:
   depth: 1
 
+# safelist
+branches:
+  only:
+  - master
+
 # Don't email me the results of the test runs.
 notifications:
   email: false
